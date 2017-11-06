@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:remove="all">Title</title>
+</head>
+<body>
+    <h1><p th:text="${name}"></p></h1>
+    <h2><p th:text="${phonenumber}"></p></h2>
+    <h3>Message:</h3>
+    <p th:text="${message}"></p>
+    <footer>Wiadomość wysłana automatycznie! Odpowiedź zostanie automatycznie przekierowana na adres nadawcy.</footer>
+</body>
+</html>
