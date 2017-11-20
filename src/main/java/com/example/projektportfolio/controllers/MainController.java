@@ -1,6 +1,7 @@
 package com.example.projektportfolio.controllers;
 
 import com.example.projektportfolio.ContactService;
+import com.example.projektportfolio.PageInfoRepository;
 import com.example.projektportfolio.ProjektportfolioRepository;
 import com.example.projektportfolio.models.forms.ContactForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class MainController {
 
     @Autowired
     ProjektportfolioRepository projektportfolioRepository;
+    @Autowired
+    PageInfoRepository pageInfoRepository;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -28,6 +31,7 @@ public class MainController {
         model.addAttribute("success", false);
 
         model.addAttribute("projects", projektportfolioRepository.findAll());
+        model.addAttribute("informations", pageInfoRepository.findAll());
 
         return "index";
     }

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class PageInfo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
