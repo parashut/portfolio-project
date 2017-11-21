@@ -16,6 +16,7 @@ public class Projektportfolio {
     private String client;
     private Date date;
     private String imgfile;
+    private String linkrepo;
 
     public int getId() {
         return id;
@@ -63,5 +64,13 @@ public class Projektportfolio {
 
     public void setImgfile(String imgfile) {
         this.imgfile = imgfile;
+    }
+
+    public String getLinkrepo() {
+        return linkrepo;
+    }
+
+    public void setLinkrepo(String linkrepo) {
+        this.linkrepo = linkrepo;
     }
 }
