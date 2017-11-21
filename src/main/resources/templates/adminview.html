@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://thymeleaf.org/">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -70,6 +70,13 @@
         <!-- /.container-fluid -->
     </nav>
 
+<section id="about">
+    <select>
+        <option th:each="info : ${informations}"
+                th:value="${info.id}"
+                th:text="${info.name}"></option>
+    </select>
+</section>
 
 
 </body>
