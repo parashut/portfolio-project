@@ -273,11 +273,11 @@
                             <img th:src="${project.imgfile}" class="img-responsive img-centered" alt="">
                             <p th:text="${project.description}"></p>
                             <ul class="list-inline item-details">
-                                <li>Klient:
+                                <li>Client:
                                     <strong><a href="#" th:text="${project.client}"></a>
                                     </strong>
                                 </li>
-                                <li>Data:
+                                <li>Date:
                                     <strong><a href="#" th:text="${#dates.format(project.date, 'MMM yyyy')}"></a>
                                     </strong>
                                 </li>
@@ -286,7 +286,7 @@
                                     </strong>
                                 </li>
                                 <li>Repository:
-                                    <strong><a href="#" th:text="${project.linkrepo}"></a>
+                                    <strong><a th:href="${project.linkrepo}" th:text="Open"></a>
                                     </strong>
                                 </li>
                             </ul>
