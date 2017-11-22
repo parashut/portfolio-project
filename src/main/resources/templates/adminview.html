@@ -55,10 +55,8 @@
                         <a href="#portfolio">Projects</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">About data</a>
+                        <a href="#about">Info on page</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#contact">Contact data</a>
                     </li>
                     <li class="">
                         <a href="/logout">Logout</a>
@@ -71,10 +69,42 @@
     </nav>
 
 <section id="about">
-    <select>
+    <table>
+        <tbody>
+        <tr>
+            <td style="width: 10%; text-align: center">id</td>
+            <td style="width: 20%; text-align: center">name</td>
+            <td style="text-align: center">text</td>
+        </tr>
+        <tr th:each="info : ${informations}">
+            <td style="text-align: center" th:text="${info.id}"></td>
+            <td th:text="${info.name}"></td>
+            <td><textarea rows="1" cols="50" th:text="${info.text}" disabled></textarea></td>
+        </tr>
+        </tbody>
+    </table>
+    <br><br><br>
+    <!--<form action="saveCustomer.html" th:action="@{/exercise12/saveCustomer.html}" th:object="${customer}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label for="paymentMethod">Payment method:</label>
+        <select th:field="*{paymentMethod}" th:remove="all-but-first">
+            <option th:each="paymentMethod : ${paymentMethods}"
+                    th:value="${paymentMethod}" th:text="${paymentMethod.description}">Credit card</option>
+            <option>Another payment method</option>
+            <option>Another payment method</option>
+        </select>
+
+        <label for="balance">Balance (dollars):</label>
+        <input type="text" th:field="*{balance}" size="10" value="2500" />
+
+        <input type="submit" />
+    </form>-->
+    <select th:remove="all-but-first">
         <option th:each="info : ${informations}"
-                th:value="${info.id}"
+                th:value="${info}"
                 th:text="${info.name}"></option>
+        <textarea rows="4" cols="50" th:text="${info.text}"></textarea>
     </select>
 </section>
 
