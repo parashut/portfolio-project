@@ -86,9 +86,8 @@
     <br><br><br>
 
     <form th:action="@{/admin}" th:object="${pageInfo}" method="post">
-        <input type="hidden" th:field="*{id}" />
-
-        <select th:field="*{id}" th:remove="all-but-first">
+        <!--<input type="hidden" th:field="*{id}" />-->
+        <select th:field="*{id}">
             <option th:each="info : ${informations}"
                     th:value="${info.id}" th:text="${info.name}"></option>
         </select>
@@ -97,12 +96,6 @@
 
         <input type="submit" />
     </form>
-
-    <!--<select th:remove="all-but-first">
-        <option th:each="info : ${informations}"
-                th:value="${info.id}"
-                th:text="${info.name}"></option>
-    </select>-->
 </section>
 
 

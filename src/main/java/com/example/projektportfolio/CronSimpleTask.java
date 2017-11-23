@@ -10,7 +10,7 @@ public class CronSimpleTask {
     @Autowired
     ProjektportfolioRepository projektportfolioRepository; //dodając to mamy dostep do bazy danych w ponizszej metodzie
 
-    @Scheduled(fixedRate = 10000) //musimy dodać w klasie startującej aplikacje adnotacje @EnableScheduling
+    @Scheduled(fixedRate = 100000) //musimy dodać w klasie startującej aplikacje adnotacje @EnableScheduling
     public void printSth(){
         System.out.println("HELLOOOO");
     }

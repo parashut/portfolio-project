@@ -36,7 +36,11 @@ public class SecureController {
 
     @PostMapping("/admin")
     public String editInfo(@ModelAttribute PageInfo pageInfo){
-        pageInfoRepository.save(pageInfoRepository.findById(pageInfo.getId()));
+        pageInfo.setName(pageInfoRepository.findById(pageInfo.getId()).getName());
+        pageInfoRepository.save(pageInfo);
+        System.out.println("id obiektu: " + pageInfo.getId());
+        System.out.println("text obiektu: " + pageInfo.getText());
+//        pageInfoRepository.updateInfo(pageInfo.getId(), pageInfo.getText());
 
         return "redirect:/admin";
     }
