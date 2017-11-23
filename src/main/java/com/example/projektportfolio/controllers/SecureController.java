@@ -40,7 +40,6 @@ public class SecureController {
         pageInfoRepository.save(pageInfo);
         System.out.println("id obiektu: " + pageInfo.getId());
         System.out.println("text obiektu: " + pageInfo.getText());
-//        pageInfoRepository.updateInfo(pageInfo.getId(), pageInfo.getText());
 
         return "redirect:/admin";
     }
