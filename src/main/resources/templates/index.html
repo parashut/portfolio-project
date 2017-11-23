@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Portfolio</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -78,13 +78,6 @@
                         <hr class="star-light">
                         <span class="skills" th:each="information : ${informations}" th:if="${information.name} == 'skills'" th:text="${information.text}"></span>
                     </div>
-                    <!--<th:block th:each="information : ${informations}">
-                        <div class="intro-text">
-                            <h1 class="name" th:if="${information.name} == 'fullname'" th:text="${information.text}"></h1>
-                            <hr class="star-light">
-                            <span class="skills" th:if="${information.name} == 'skills'" th:text="${information.text}"></span>
-                        </div>
-                    </th:block>-->
                 </div>
             </div>
         </div>

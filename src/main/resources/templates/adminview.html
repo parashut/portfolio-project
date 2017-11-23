@@ -84,28 +84,25 @@
         </tbody>
     </table>
     <br><br><br>
-    <!--<form action="saveCustomer.html" th:action="@{/exercise12/saveCustomer.html}" th:object="${customer}" method="post">
+
+    <form th:action="@{/admin}" th:object="${pageInfo}" method="post">
         <input type="hidden" th:field="*{id}" />
 
-        <label for="paymentMethod">Payment method:</label>
-        <select th:field="*{paymentMethod}" th:remove="all-but-first">
-            <option th:each="paymentMethod : ${paymentMethods}"
-                    th:value="${paymentMethod}" th:text="${paymentMethod.description}">Credit card</option>
-            <option>Another payment method</option>
-            <option>Another payment method</option>
+        <select th:field="*{id}" th:remove="all-but-first">
+            <option th:each="info : ${informations}"
+                    th:value="${info.id}" th:text="${info.name}"></option>
         </select>
 
-        <label for="balance">Balance (dollars):</label>
-        <input type="text" th:field="*{balance}" size="10" value="2500" />
+        <textarea rows="4" cols="50" th:field="*{text}"></textarea>
 
         <input type="submit" />
-    </form>-->
-    <select th:remove="all-but-first">
+    </form>
+
+    <!--<select th:remove="all-but-first">
         <option th:each="info : ${informations}"
-                th:value="${info}"
+                th:value="${info.id}"
                 th:text="${info.name}"></option>
-        <textarea rows="4" cols="50" th:text="${info.text}"></textarea>
-    </select>
+    </select>-->
 </section>
 
 

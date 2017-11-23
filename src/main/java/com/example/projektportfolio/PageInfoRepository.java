@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface PageInfoRepository extends CrudRepository<PageInfo, Integer> {
     List<PageInfo> findAll();
+    PageInfo findById(int id);
 }
