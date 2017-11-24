@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ProjektportfolioRepository extends CrudRepository<Projektportfolio, Integer>{
     List<Projektportfolio> findAll();
+    Projektportfolio findById(int id);
 }

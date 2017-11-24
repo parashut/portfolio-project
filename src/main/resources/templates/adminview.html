@@ -52,11 +52,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Projects</a>
+                        <a href="#projects">Projects</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">Info on page</a>
-                    </li>
+                        <a href="#info">Info on page</a>
                     </li>
                     <li class="">
                         <a href="/logout">Logout</a>
@@ -68,7 +67,7 @@
         <!-- /.container-fluid -->
     </nav>
 
-<section id="about">
+<section id="info">
     <table>
         <tbody>
         <tr>
@@ -97,11 +96,12 @@
     </form>
 </section>
 
-<section id="portfolio">
+<section id="projects">
     <table>
         <tbody>
         <tr>
-            <td style="width: 10%; text-align: center">id</td>
+            <td style="text-align: center">id</td>
+            <td style="text-align: center"></td>
             <td style="text-align: center">name</td>
             <td style="text-align: center">description</td>
             <td style="text-align: center">client</td>
@@ -110,13 +110,17 @@
             <td style="text-align: center">link repo</td>
         </tr>
         <tr th:each="project : ${projects}">
-            <td style="text-align: center" th:text="${project.id}"></td>
-            <td><input type="text" th:value="${project.name}"></td>
-            <td><input type="text" th:value="${project.description}"></td>
-            <td><input type="text" th:value="${project.client}"></td>
-            <td><input type="text" th:value="${project.date}"></td>
-            <td><input type="text" th:value="${project.imgfile}"></td>
-            <td><input type="text" th:value="${project.linkrepo}"></td>
+            <form th:action="@{/admin/editproject}" th:object="${projektportfolio}" method="post">
+                <td th:text="${project.id}"></td>
+                <td><textarea rows="1" th:text="${project.id}" th:field="*{id}" hidden></textarea></td>
+                <td><textarea rows="1" th:text="${project.name}" th:field="*{name}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.description}" th:field="*{description}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.client}" th:field="*{client}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.date}" th:field="*{date}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.imgfile}" th:field="*{imgfile}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.linkrepo}" th:field="*{linkrepo}"></textarea></td>
+                <td><input type="submit" value="Edit"/></td>
+            </form>
         </tr>
         </tbody>
     </table>

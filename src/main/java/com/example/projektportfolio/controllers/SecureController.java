@@ -3,6 +3,7 @@ package com.example.projektportfolio.controllers;
 import com.example.projektportfolio.PageInfoRepository;
 import com.example.projektportfolio.ProjektportfolioRepository;
 import com.example.projektportfolio.models.PageInfo;
+import com.example.projektportfolio.models.Projektportfolio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,9 +28,10 @@ public class SecureController {
 
     @RequestMapping("/admin")
     public String adminPage(Model model) {
-        model.addAttribute("projects", projektportfolioRepository.findAll());
         model.addAttribute("informations", pageInfoRepository.findAll());
         model.addAttribute("pageInfo", new PageInfo());
+        model.addAttribute("projects", projektportfolioRepository.findAll());
+        model.addAttribute("projektportfolio", new Projektportfolio());
 
         return "adminview";
     }
@@ -38,8 +40,13 @@ public class SecureController {
     public String editInfo(@ModelAttribute PageInfo pageInfo){
         pageInfo.setName(pageInfoRepository.findById(pageInfo.getId()).getName());
         pageInfoRepository.save(pageInfo);
-        System.out.println("id obiektu: " + pageInfo.getId());
-        System.out.println("text obiektu: " + pageInfo.getText());
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/admin/editproject")
+    public String editProject(@ModelAttribute Projektportfolio projektportfolio){
+        projektportfolioRepository.save(projektportfolio);
 
         return "redirect:/admin";
     }
