@@ -100,7 +100,7 @@
     <table>
         <tbody>
         <tr>
-            <td style="text-align: center">id</td>
+            <td style="width: 10%; text-align: center">id</td>
             <td style="text-align: center"></td>
             <td style="text-align: center">name</td>
             <td style="text-align: center">description</td>
@@ -111,7 +111,7 @@
         </tr>
         <tr th:each="project : ${projects}">
             <form th:action="@{/admin/editproject}" th:object="${projektportfolio}" method="post">
-                <td th:text="${project.id}"></td>
+                <td style="text-align: center" th:text="${project.id}"></td>
                 <td><textarea rows="1" th:text="${project.id}" th:field="*{id}" hidden></textarea></td>
                 <td><textarea rows="1" th:text="${project.name}" th:field="*{name}"></textarea></td>
                 <td><textarea rows="1" th:text="${project.description}" th:field="*{description}"></textarea></td>
