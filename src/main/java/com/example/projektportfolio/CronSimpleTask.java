@@ -10,9 +10,9 @@ public class CronSimpleTask {
     @Autowired
     ProjektportfolioRepository projektportfolioRepository; //dodając to mamy dostep do bazy danych w ponizszej metodzie
 
-    @Scheduled(fixedRate = 100000) //musimy dodać w klasie startującej aplikacje adnotacje @EnableScheduling
+    @Scheduled(fixedRate = 1000*60) //musimy dodać w klasie startującej aplikacje adnotacje @EnableScheduling
     public void printSth(){
-        System.out.println("HELLOOOO");
+        System.out.println("OK");
     }
 
     // s m g d m d - ostatnie d to dzien tygodnia, pierwsze d to dzien miesiąca
@@ -25,6 +25,6 @@ public class CronSimpleTask {
     // 0 0 0 24 12
     @Scheduled(cron = "0 0 * * * ?") //co pelna godzine
     public void printSth2(){
-        System.out.println("HELLOOOO222222");
+        System.out.println("OK");
     }
 }

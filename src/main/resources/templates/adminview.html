@@ -93,10 +93,34 @@
 
         <textarea rows="4" cols="50" th:field="*{text}"></textarea>
 
-        <input type="submit" />
+        <input type="submit" value="Edit"/>
     </form>
 </section>
 
+<section id="portfolio">
+    <table>
+        <tbody>
+        <tr>
+            <td style="width: 10%; text-align: center">id</td>
+            <td style="text-align: center">name</td>
+            <td style="text-align: center">description</td>
+            <td style="text-align: center">client</td>
+            <td style="text-align: center">date</td>
+            <td style="text-align: center">imgfile</td>
+            <td style="text-align: center">link repo</td>
+        </tr>
+        <tr th:each="project : ${projects}">
+            <td style="text-align: center" th:text="${project.id}"></td>
+            <td><input type="text" th:value="${project.name}"></td>
+            <td><input type="text" th:value="${project.description}"></td>
+            <td><input type="text" th:value="${project.client}"></td>
+            <td><input type="text" th:value="${project.date}"></td>
+            <td><input type="text" th:value="${project.imgfile}"></td>
+            <td><input type="text" th:value="${project.linkrepo}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
 
 </body>
 
