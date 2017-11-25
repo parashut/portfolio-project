@@ -105,7 +105,7 @@
             <td style="text-align: center">name</td>
             <td style="text-align: center">description</td>
             <td style="text-align: center">client</td>
-            <td style="text-align: center">date</td>
+            <!--<td style="text-align: center">date</td>-->
             <td style="text-align: center">imgfile</td>
             <td style="text-align: center">link repo</td>
         </tr>
@@ -116,7 +116,7 @@
                 <td><textarea rows="1" th:text="${project.name}" th:field="*{name}"></textarea></td>
                 <td><textarea rows="1" th:text="${project.description}" th:field="*{description}"></textarea></td>
                 <td><textarea rows="1" th:text="${project.client}" th:field="*{client}"></textarea></td>
-                <td><textarea rows="1" th:text="${project.date}" th:field="*{date}"></textarea></td>
+                <!--<td><textarea rows="1" th:text="${project.date}" th:field="*{date}"></textarea></td>-->
                 <td><textarea rows="1" th:text="${project.imgfile}" th:field="*{imgfile}"></textarea></td>
                 <td><textarea rows="1" th:text="${project.linkrepo}" th:field="*{linkrepo}"></textarea></td>
                 <td><input type="submit" value="Edit"/></td>
@@ -124,6 +124,16 @@
         </tr>
         </tbody>
     </table>
+    <tbody>
+    <form th:action="@{/admin/deleteproject}" th:object="${projektportfolio}" method="post">
+        <select th:field="*{id}">
+            <option th:each="project : ${projects}"
+                    th:value="${project.id}" th:text="${project.name}"></option>
+        </select>
+
+        <input type="submit" value="Delete"/>
+    </form>
+    </tbody>
 </section>
 
 </body>

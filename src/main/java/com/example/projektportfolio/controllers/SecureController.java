@@ -51,6 +51,13 @@ public class SecureController {
         return "redirect:/admin";
     }
 
+    @PostMapping("/admin/deleteproject")
+    public String deleteProject(@ModelAttribute Projektportfolio projektportfolio){
+        projektportfolioRepository.delete(projektportfolio);
+
+        return "redirect:/admin";
+    }
+
     @GetMapping("/logout")
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
