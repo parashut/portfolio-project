@@ -67,7 +67,60 @@
         <!-- /.container-fluid -->
     </nav>
 
+<section id="projects">
+    <table>
+        <tbody>
+        <h3>list of projects:</h3>
+        <tr>
+            <td style="width: 5%; text-align: center">id</td>
+            <td style="text-align: center"></td>
+            <td style="text-align: center">name</td>
+            <td style="text-align: center">description</td>
+            <td style="text-align: center">client</td>
+            <td style="text-align: center">date</td>
+            <td style="text-align: center">imgfile</td>
+            <td style="text-align: center">link repo</td>
+        </tr>
+        <tr th:each="project : ${projects}">
+            <form th:action="@{/admin/editproject}" th:object="${projektportfolio}" method="post">
+                <td style="text-align: center" th:text="${project.id}"></td>
+                <td><textarea rows="1" th:text="${project.id}" th:field="*{id}" hidden></textarea></td>
+                <td><textarea rows="1" th:text="${project.name}" th:field="*{name}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.description}" th:field="*{description}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.client}" th:field="*{client}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.date}" th:field="*{date}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.imgfile}" th:field="*{imgfile}"></textarea></td>
+                <td><textarea rows="1" th:text="${project.linkrepo}" th:field="*{linkrepo}"></textarea></td>
+                <td><input type="submit" value="Edit"/></td>
+            </form>
+        </tr>
+        <tr>
+            <form th:action="@{/admin/editproject}" th:object="${projektportfolio}" method="post">
+                <td style="text-align: center" th:text="new"></td>
+                <td><textarea rows="1" th:field="*{id}" hidden></textarea></td>
+                <td><textarea rows="1" th:field="*{name}"></textarea></td>
+                <td><textarea rows="1" th:field="*{description}"></textarea></td>
+                <td><textarea rows="1" th:field="*{client}"></textarea></td>
+                <td><input type="date" th:field="*{date}"/></td>
+                <td><textarea rows="1" th:field="*{imgfile}"></textarea></td>
+                <td><textarea rows="1" th:field="*{linkrepo}"></textarea></td>
+                <td><input type="submit" value="Add"/></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+    <h3>delete project:</h3>
+    <form th:action="@{/admin/deleteproject}" th:object="${projektportfolio}" method="post">
+        <select th:field="*{id}">
+            <option th:each="project : ${projects}"
+                    th:value="${project.id}" th:text="${project.name}"></option>
+        </select>
+
+        <input type="submit" value="Delete"/>
+    </form>
+</section>
 <section id="info">
+    <h3>all info on page:</h3>
     <table>
         <tbody>
         <tr>
@@ -82,8 +135,7 @@
         </tr>
         </tbody>
     </table>
-    <br><br><br>
-
+    <h3>edit info:</h3>
     <form th:action="@{/admin}" th:object="${pageInfo}" method="post">
         <select th:field="*{id}">
             <option th:each="info : ${informations}"
@@ -96,45 +148,6 @@
     </form>
 </section>
 
-<section id="projects">
-    <table>
-        <tbody>
-        <tr>
-            <td style="width: 10%; text-align: center">id</td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">name</td>
-            <td style="text-align: center">description</td>
-            <td style="text-align: center">client</td>
-            <!--<td style="text-align: center">date</td>-->
-            <td style="text-align: center">imgfile</td>
-            <td style="text-align: center">link repo</td>
-        </tr>
-        <tr th:each="project : ${projects}">
-            <form th:action="@{/admin/editproject}" th:object="${projektportfolio}" method="post">
-                <td style="text-align: center" th:text="${project.id}"></td>
-                <td><textarea rows="1" th:text="${project.id}" th:field="*{id}" hidden></textarea></td>
-                <td><textarea rows="1" th:text="${project.name}" th:field="*{name}"></textarea></td>
-                <td><textarea rows="1" th:text="${project.description}" th:field="*{description}"></textarea></td>
-                <td><textarea rows="1" th:text="${project.client}" th:field="*{client}"></textarea></td>
-                <!--<td><textarea rows="1" th:text="${project.date}" th:field="*{date}"></textarea></td>-->
-                <td><textarea rows="1" th:text="${project.imgfile}" th:field="*{imgfile}"></textarea></td>
-                <td><textarea rows="1" th:text="${project.linkrepo}" th:field="*{linkrepo}"></textarea></td>
-                <td><input type="submit" value="Edit"/></td>
-            </form>
-        </tr>
-        </tbody>
-    </table>
-    <tbody>
-    <form th:action="@{/admin/deleteproject}" th:object="${projektportfolio}" method="post">
-        <select th:field="*{id}">
-            <option th:each="project : ${projects}"
-                    th:value="${project.id}" th:text="${project.name}"></option>
-        </select>
-
-        <input type="submit" value="Delete"/>
-    </form>
-    </tbody>
-</section>
 
 </body>
 

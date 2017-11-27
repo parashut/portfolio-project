@@ -5,18 +5,19 @@ import com.example.projektportfolio.ProjektportfolioRepository;
 import com.example.projektportfolio.models.PageInfo;
 import com.example.projektportfolio.models.Projektportfolio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class SecureController {
@@ -65,6 +66,14 @@ public class SecureController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/";
+    }
+
+//    You have to register an InitBinder in your controller to let spring convert your date string to java.util.Date object and set it in command object.
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
 
 }
