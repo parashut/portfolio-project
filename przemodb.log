@@ -1,4 +1,5 @@
-/*C11*/SET SCHEMA PUBLIC
-DELETE FROM PROJEKTPORTFOLIO WHERE ID=1
-INSERT INTO PROJEKTPORTFOLIO VALUES(1,'Battlefield1','Simply TicTacToe witch MVC and JavaFX','AkademiaKodu','2017-06-10','img/portfolio/cabin.png','https://github.com/parashut/tictactoe_vel_BattleField')
+/*C12*/SET SCHEMA PUBLIC
+INSERT INTO PROJEKTPORTFOLIO VALUES(15,'a','b','a','2017-01-01','','')
+COMMIT
+DELETE FROM PROJEKTPORTFOLIO WHERE ID=15
 COMMIT

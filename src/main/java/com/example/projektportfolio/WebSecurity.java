@@ -19,7 +19,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
         httpSecurity.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin").authenticated()
+                .antMatchers("/admin/**").authenticated()
+//                .antMatchers("admin").hasRole("ADMIN")
 //                .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -38,6 +40,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
         //zmienić na jdbc authentication
         auth.inMemoryAuthentication()
-                .withUser("przemo").password("test1234").roles("ADMIN");
+                .withUser("przemo").password("test1234").roles("ADMIN")
+                .and()
+                .withUser("parashut").password("1234test").roles("USER");
     }
 }
