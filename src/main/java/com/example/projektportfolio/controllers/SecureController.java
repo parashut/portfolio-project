@@ -37,7 +37,7 @@ public class SecureController {
         return "adminview";
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/admin/editinfo")
     public String editInfo(@ModelAttribute PageInfo pageInfo){
         pageInfo.setName(pageInfoRepository.findById(pageInfo.getId()).getName());
         pageInfoRepository.save(pageInfo);

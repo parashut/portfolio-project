@@ -136,7 +136,7 @@
         </tbody>
     </table>
     <h3>edit info:</h3>
-    <form th:action="@{/admin}" th:object="${pageInfo}" method="post">
+    <form th:action="@{/admin/editinfo}" th:object="${pageInfo}" method="post">
         <select th:field="*{id}">
             <option th:each="info : ${informations}"
                     th:value="${info.id}" th:text="${info.name}"></option>
