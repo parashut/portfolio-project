@@ -1,5 +1,7 @@
 package com.example.projektportfolio;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -7,12 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class CronSimpleTask {
 
+    private final Logger log = LoggerFactory.getLogger(getClass());
+
     @Autowired
     ProjektportfolioRepository projektportfolioRepository; //dodając to mamy dostep do bazy danych w ponizszej metodzie
 
     @Scheduled(fixedRate = 1000*60) //musimy dodać w klasie startującej aplikacje adnotacje @EnableScheduling
     public void printSth(){
-        System.out.println("OK");
+        log.info("OK");
     }
 
     // s m g d m d - ostatnie d to dzien tygodnia, pierwsze d to dzien miesiąca
@@ -25,6 +29,6 @@ public class CronSimpleTask {
     // 0 0 0 24 12
     @Scheduled(cron = "0 0 * * * ?") //co pelna godzine
     public void printSth2(){
-        System.out.println("OK");
+        log.info("OK");
     }
 }

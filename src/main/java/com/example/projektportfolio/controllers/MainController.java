@@ -4,6 +4,8 @@ import com.example.projektportfolio.ContactService;
 import com.example.projektportfolio.PageInfoRepository;
 import com.example.projektportfolio.ProjektportfolioRepository;
 import com.example.projektportfolio.models.forms.ContactForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,8 @@ public class MainController {
     @Autowired
     PageInfoRepository pageInfoRepository;
 
+    private final Logger log = LoggerFactory.getLogger(getClass());
+
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("emailClass", new ContactForm());
@@ -40,6 +44,7 @@ public class MainController {
     public String submit(@ModelAttribute("emailClass") ContactForm contact, Model model) {
         Context context = new Context();
         context.setVariable("name", "Name: " + contact.getName());
+        context.setVariable("email", "Email: " + contact.getEmail());
         context.setVariable("phonenumber", "Phone number: " + contact.getPhonenumber());
         context.setVariable("message", contact.getMessage());
 
@@ -50,8 +55,8 @@ public class MainController {
         model.addAttribute("success", true);
         model.addAttribute("emailClass", new ContactForm()); //wyczyści formularz z pamięci
 
-        System.out.println("mail wyslany; adres zwrotny: " + contact.getEmail());
-        return "index";
+        log.info("mail wyslany; adres zwrotny: " + contact.getEmail());
+        return "redirect:/";
     }
 
     /*@RequestMapping(value = "/", method = RequestMethod.POST)
